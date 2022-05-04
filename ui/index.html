@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Библиотека</title>
+
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section>
+    <div class="div1">
+        <select class="select" id="select1">
+            <option value="byName">По названию книги</option>
+            <option value="byAuthor">По автору</option>
+            <option value="byYear">По году выпуска</option>
+        </select>
+        <input type="text" value="" id="name">
+        <button class="btn" id="search1"> Поиск</button>
+        <br>
+    </div>
+    <div class="container">
+        <div class="input_container" >
+            <div class="inputbox">
+                <p>Стеллаж</p>
+                <input class="input1 " id="shelfRackSearch">
+            </div>
+            <div class="inputbox">
+                <p>Полка</p>
+                <input class="input1" id="shelfSearch">
+            </div>
+            <div class="inputbox">
+                <p>Номер</p>
+                <input class="input1" id="orderNumberSearch">
+
+            </div>
+        </div>
+        <button class="btn" id="searchLoc">Поиск</button>
+    </div>
+    <p class="content"  id = "content"></p>
+    <div class="container">
+        <button class="btn" id="delete">Удалить книгу</button>
+        <div class="big_input">
+            <div class="input_container" >
+                <div class="inputbox">
+                    <p>Название</p>
+                    <input class="input1" id="idAdd">
+                </div>
+                <div class="inputbox">
+                    <p>Автор</p>
+                    <input class="input1" id="authorAdd">
+                </div>
+                <div class="inputbox">
+                    <p>Год в.</p>
+                    <input class="input1" id="yearAdd">
+
+                </div>
+            </div>
+            <div class="input_container" >
+                <div class="inputbox">
+                    <p>Стеллаж</p>
+                    <input class="input1" id="shelfRackAdd">
+                </div>
+                <div class="inputbox">
+                    <p>Полка</p>
+                    <input class="input1" id="shelfAdd">
+                </div>
+                <div class="inputbox">
+                    <p>Номер</p>
+                    <input class="input1" id="orderNumberAdd">
+
+                </div>
+            </div>
+            <button class="btn" id="addBtn">Добавить книгу</button>
+        </div>
+
+
+    </div>
+</section>
+<script src = "index.js"></script>
+</body>
+</html>

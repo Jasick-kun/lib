@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+*{
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    font-family: "Roboto Light";
+    font-weight: 700;
+    border-radius: 8px;
+    transition: 0.3s ease-in;
+}
+body{
+
+    background-image: url("back.jpg");
+    background-color: rgba(0,0,0,0.4);
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    margin: 2rem 9%;
+
+}
+.div1{
+    width: 100%;
+    text-align: center;
+}
+section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    flex: 1rem;
+}
+.select{
+    background-color: white;
+}
+.input_container{
+    display: flex;
+    justify-content: space-between;
+}
+.inputbox{
+    display: flex;
+    flex-direction: column;
+
+}
+.container{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0.5rem;
+}
+p {
+    background-color: white;
+    display: inline-block;
+    text-align: center;
+}
+
+.input1{
+    width: 110px;
+    padding: 0.5rem;
+}
+.btn{
+    display: inline;
+    padding: 0.25rem 0.5rem;
+}
+.btn:hover{
+    background: aqua;
+}
+.content{
+    width: 500px;
+}
+.btnbox{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.big_input{
+    padding: 1rem;
+    border: solid 3px rgba(88, 51, 23, 0.8);
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgb(151,117,94);
+}
