@@ -25,9 +25,8 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "update book set status = 'BOOKED', booked_by=:contacts where id = :id",nativeQuery = true)
-    void reserveBook(Long id,String contacts);
-
+    @Query(value = "update book set status = 'BOOKED', booked_by=:contacts where id = :id", nativeQuery = true)
+    void reserveBook(Long id, String contacts);
 
 
 }

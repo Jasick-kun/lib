@@ -5,7 +5,6 @@ import kz.alizhan.lib.Entity.Book;
 import kz.alizhan.lib.Repository.BookRepository;
 import kz.alizhan.lib.Repository.DialogRepository;
 import lombok.RequiredArgsConstructor;
-import org.telegram.telegrambots.meta.api.methods.send.SendAnimation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
@@ -18,7 +17,6 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +24,11 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class SearchCommand extends Bot {
-        private final BookRepository bookRepository;
-        private final DialogRepository dialogRepository;
+    private final BookRepository bookRepository;
+    private final DialogRepository dialogRepository;
 
 
-
-    public  SendMessage search(Update update){
+    public SendMessage search(Update update) {
         SendMessage sendMessage = SendMessage.builder()
                 .chatId(update.getMessage().getChatId().toString())
                 .text("Выберите тип поиска")
@@ -54,10 +51,15 @@ public class SearchCommand extends Bot {
         replyKeyboardMarkup.setKeyboard(keyboard);
         return sendMessage;
     }
-    public void searchByAuthor(Update update) {
+
+    public void searchByAuthor(Update update) throws TelegramApiException {
         List<Book> books = new ArrayList<>();
 
         books = bookRepository.findBooksByAuthor(update.getMessage().getText());
+        if (books.size() == 0) {
+            execute(SendMessage.builder().text("Книга не найдена или её нет в наличии\n" +
+                    "Попробуйте ввести ещё раз").chatId(update.getMessage().getChatId().toString()).build());
+        }
         for (Book book : books) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("Название : " + book.getName());
@@ -104,21 +106,25 @@ public class SearchCommand extends Bot {
             executeAsync(sendPhoto);
         }
     }
+
     public void searchByName(Update update) throws TelegramApiException, IOException {
         List<Book> books = new ArrayList<>();
 
         books = bookRepository.findBooksByName(update.getMessage().getText());
-        for (Book book: books) {
+        if (books.size() == 0) {
+            execute(SendMessage.builder().text("Книга не найдена или её нет в наличии\n" +
+                    "Попробуйте ввести ещё раз").chatId(update.getMessage().getChatId().toString()).build());
+        }
+        for (Book book : books) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("Название : " + book.getName());
             stringBuilder.append("\nАвтор : " + book.getAuthor());
-            stringBuilder.append("\nГод выпуска : "+book.getYearOfIssue().toString());
+            stringBuilder.append("\nГод выпуска : " + book.getYearOfIssue().toString());
             String status = "";
             SendPhoto sendPhoto = new SendPhoto();
-            if(book.getStatus().equals(BookState.BOOKED)){
+            if (book.getStatus().equals(BookState.BOOKED)) {
                 status = "Забронировано";
-            }
-            else if(book.getStatus().equals(BookState.IN_STOCK)){
+            } else if (book.getStatus().equals(BookState.IN_STOCK)) {
                 status = "В наличии";
                 InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
                 InlineKeyboardButton inlineKeyboardButton = new InlineKeyboardButton();
@@ -130,9 +136,7 @@ public class SearchCommand extends Bot {
                 rowList.add(list);
                 inlineKeyboardMarkup.setKeyboard(rowList);
                 sendPhoto.setReplyMarkup(inlineKeyboardMarkup);
-            }
-
-            else if(book.getStatus().equals(BookState.ON_THE_HANDS)){
+            } else if (book.getStatus().equals(BookState.ON_THE_HANDS)) {
                 status = "На руках";
 
                 InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
@@ -147,9 +151,9 @@ public class SearchCommand extends Bot {
                 sendPhoto.setReplyMarkup(inlineKeyboardMarkup);
             }
             sendPhoto.setChatId(update.getMessage().getChatId().toString());
-            sendPhoto.setPhoto(new InputFile(new File(System.getProperty("user.dir")+"\\Content\\"+book.getName()+".jpg")));
+            sendPhoto.setPhoto(new InputFile(new File(System.getProperty("user.dir") + "\\Content\\" + book.getName() + ".jpg")));
 
-            stringBuilder.append("\nСтатус : "+status);
+            stringBuilder.append("\nСтатус : " + status);
             sendPhoto.setCaption(stringBuilder.toString());
 
 
@@ -159,21 +163,25 @@ public class SearchCommand extends Bot {
 
         }
     }
+
     public void searchByYear(Update update) throws TelegramApiException, IOException {
         List<Book> books = new ArrayList<>();
 
         books = bookRepository.findBooksByYearOfIssue(Integer.parseInt(update.getMessage().getText()));
-        for (Book book: books) {
+        if (books.size() == 0) {
+            execute(SendMessage.builder().text("Книга не найдена или её нет в наличии\n" +
+                    "Попробуйте ввести ещё раз").chatId(update.getMessage().getChatId().toString()).build());
+        }
+        for (Book book : books) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("Название : " + book.getName());
             stringBuilder.append("\nАвтор : " + book.getAuthor());
-            stringBuilder.append("\nГод выпуска : "+book.getYearOfIssue().toString());
+            stringBuilder.append("\nГод выпуска : " + book.getYearOfIssue().toString());
             String status = "";
             SendPhoto sendPhoto = new SendPhoto();
-            if(book.getStatus().equals(BookState.BOOKED)){
+            if (book.getStatus().equals(BookState.BOOKED)) {
                 status = "Забронировано";
-            }
-            else if(book.getStatus().equals(BookState.IN_STOCK)){
+            } else if (book.getStatus().equals(BookState.IN_STOCK)) {
                 status = "В наличии";
                 InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
                 InlineKeyboardButton inlineKeyboardButton = new InlineKeyboardButton();
@@ -185,9 +193,7 @@ public class SearchCommand extends Bot {
                 rowList.add(list);
                 inlineKeyboardMarkup.setKeyboard(rowList);
                 sendPhoto.setReplyMarkup(inlineKeyboardMarkup);
-            }
-
-            else if(book.getStatus().equals(BookState.ON_THE_HANDS)){
+            } else if (book.getStatus().equals(BookState.ON_THE_HANDS)) {
                 status = "На руках";
 
                 InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
@@ -202,9 +208,9 @@ public class SearchCommand extends Bot {
                 sendPhoto.setReplyMarkup(inlineKeyboardMarkup);
             }
             sendPhoto.setChatId(update.getMessage().getChatId().toString());
-            sendPhoto.setPhoto(new InputFile(new File(System.getProperty("user.dir")+"\\Content\\"+book.getName()+".jpg")));
+            sendPhoto.setPhoto(new InputFile(new File(System.getProperty("user.dir") + "\\Content\\" + book.getName() + ".jpg")));
 
-            stringBuilder.append("\nСтатус : "+status);
+            stringBuilder.append("\nСтатус : " + status);
             sendPhoto.setCaption(stringBuilder.toString());
 
 
@@ -214,7 +220,6 @@ public class SearchCommand extends Bot {
 
         }
     }
-
 
 
 }
