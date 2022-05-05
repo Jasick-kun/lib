@@ -169,7 +169,7 @@ public class SearchCommand extends Bot {
 
         books = bookRepository.findBooksByYearOfIssue(Integer.parseInt(update.getMessage().getText()));
         if (books.size() == 0) {
-            execute(SendMessage.builder().text("Книга не найдена или её нет в наличии\n" +
+            execute(SendMessage.builder().text("Книга не найдена или её нет в наличии.\n" +
                     "Попробуйте ввести ещё раз").chatId(update.getMessage().getChatId().toString()).build());
         }
         for (Book book : books) {

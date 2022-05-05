@@ -25,7 +25,10 @@ public class MainCommand extends Bot {
         if (update.hasCallbackQuery()) {
             bookRepository.reserveBook(Long.parseLong(update.getCallbackQuery().getData()), update.getCallbackQuery().getFrom().getFirstName() + " " + update.getCallbackQuery().getFrom().getLastName());
             try {
-                execute(SendMessage.builder().chatId(update.getCallbackQuery().getMessage().getChatId().toString()).text("Книга успешно забронирована").build());
+                execute(SendMessage.builder().chatId(update.getCallbackQuery().getMessage().getChatId().toString()).text("Спасибо за обращение.\n" +
+                        "Книга успешно забронирована. \n" +
+                        "Можете забрать книгу по адресу Пушкина 11, \n" +
+                        "в течений двух дней сказав своё имя из телеграмм").build());
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
