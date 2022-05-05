@@ -7,9 +7,6 @@ import java.util.List;
 
 public interface BookService {
 
-    List<Book> findAll();
-
-    Book getBookById(Long id);
 
     List<Book> getBooksByAuthor(String author);
 
@@ -17,5 +14,4 @@ public interface BookService {
 
     List<Book> getBooksByName(String name);
 
-    void addBook(Book book);
 }

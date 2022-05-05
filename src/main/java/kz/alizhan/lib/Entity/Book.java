@@ -20,8 +20,6 @@ public class Book {
     private String name;
     private Integer yearOfIssue;
     private String author;
-    @OneToOne
-    @JoinColumn(table = "location", name = "id")
-    private Location location;
-
+    private String status;
+    private String bookedBy;
 }
