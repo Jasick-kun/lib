@@ -1,4 +1,4 @@
-package kz.alizhan.lib.Constants;
+package kz.alimzhan.lib.Constants;
 
 public class BotConfig {
     public static final String BOT_USERNAME = "AlimzhanLib";

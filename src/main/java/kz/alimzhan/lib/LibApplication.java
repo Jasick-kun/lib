@@ -1,4 +1,4 @@
-package kz.alizhan.lib;
+package kz.alimzhan.lib;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

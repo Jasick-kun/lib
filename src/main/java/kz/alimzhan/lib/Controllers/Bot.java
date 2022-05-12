@@ -1,6 +1,6 @@
-package kz.alizhan.lib.Controllers;
+package kz.alimzhan.lib.Controllers;
 
-import kz.alizhan.lib.Constants.BotConfig;
+import kz.alimzhan.lib.Constants.BotConfig;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 

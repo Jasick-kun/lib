@@ -1,4 +1,4 @@
-package kz.alizhan.lib.Entity;
+package kz.alimzhan.lib.Entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

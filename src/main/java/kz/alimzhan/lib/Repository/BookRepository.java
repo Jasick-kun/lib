@@ -1,6 +1,6 @@
-package kz.alizhan.lib.Repository;
+package kz.alimzhan.lib.Repository;
 
-import kz.alizhan.lib.Entity.Book;
+import kz.alimzhan.lib.Entity.Book;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,13 +14,13 @@ import java.util.List;
 public interface BookRepository extends CrudRepository<Book, Long> {
 
 
-    @Query(value = "select * from book  where  lower(name) like concat('%',lower(:name),'%') ", nativeQuery = true)
+    @Query(value = "select * from book b join library l on l.id = b.library_id where  lower(b.name) like concat('%',lower(:name),'%') ", nativeQuery = true)
     List<Book> findBooksByName(@Param("name") String name);
 
-    @Query(value = "select * from book where lower(author) like concat('%',lower(:name),'%')", nativeQuery = true)
+    @Query(value = "select * from book b join library l on l.id = b.library_id where lower(b.author) like concat('%',lower(:name),'%')", nativeQuery = true)
     List<Book> findBooksByAuthor(@Param("name") String name);
 
-    @Query(value = "select * from book  where year_of_issue = :year", nativeQuery = true)
+    @Query(value = "select * from book b join library l on b.library_id = l.id  where b.year_of_issue = :year", nativeQuery = true)
     List<Book> findBooksByYearOfIssue(@Param("year") Integer year);
 
     @Modifying

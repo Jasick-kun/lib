@@ -1,14 +1,11 @@
-package kz.alizhan.lib.Entity;
+package kz.alimzhan.lib.Entity;
 
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -25,4 +22,7 @@ public class Book {
     private String author;
     private String status;
     private String bookedBy;
+    @ManyToOne
+    @JoinColumn(name = "library_id")
+    private Library library;
 }

@@ -1,9 +1,9 @@
-package kz.alizhan.lib.Controllers;
+package kz.alimzhan.lib.Controllers;
 
-import kz.alizhan.lib.Constants.BookState;
-import kz.alizhan.lib.Entity.Book;
-import kz.alizhan.lib.Repository.BookRepository;
-import kz.alizhan.lib.Repository.DialogRepository;
+import kz.alimzhan.lib.Constants.BookState;
+import kz.alimzhan.lib.Entity.Book;
+import kz.alimzhan.lib.Repository.BookRepository;
+import kz.alimzhan.lib.Repository.DialogRepository;
 import lombok.RequiredArgsConstructor;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -99,6 +99,8 @@ public class SearchCommand extends Bot {
             sendPhoto.setPhoto(new InputFile(new File(System.getProperty("user.dir") + "\\Content\\" + book.getName() + ".jpg")));
 
             stringBuilder.append("\nСтатус : " + status);
+            stringBuilder.append("\n" + book.getLibrary().getName());
+            stringBuilder.append("\nАдрес библиотеки : " + book.getLibrary().getAddress());
             sendPhoto.setCaption(stringBuilder.toString());
 
 
@@ -152,8 +154,9 @@ public class SearchCommand extends Bot {
             }
             sendPhoto.setChatId(update.getMessage().getChatId().toString());
             sendPhoto.setPhoto(new InputFile(new File(System.getProperty("user.dir") + "\\Content\\" + book.getName() + ".jpg")));
-
             stringBuilder.append("\nСтатус : " + status);
+            stringBuilder.append("\n" + book.getLibrary().getName());
+            stringBuilder.append("\nАдрес библиотеки : " + book.getLibrary().getAddress());
             sendPhoto.setCaption(stringBuilder.toString());
 
 
@@ -211,6 +214,8 @@ public class SearchCommand extends Bot {
             sendPhoto.setPhoto(new InputFile(new File(System.getProperty("user.dir") + "\\Content\\" + book.getName() + ".jpg")));
 
             stringBuilder.append("\nСтатус : " + status);
+            stringBuilder.append("\n" + book.getLibrary().getName());
+            stringBuilder.append("\nАдрес библиотеки : " + book.getLibrary().getAddress());
             sendPhoto.setCaption(stringBuilder.toString());
 
 

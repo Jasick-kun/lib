@@ -1,6 +1,6 @@
-package kz.alizhan.lib.Repository;
+package kz.alimzhan.lib.Repository;
 
-import kz.alizhan.lib.Entity.Dialog;
+import kz.alimzhan.lib.Entity.Dialog;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

@@ -1,4 +1,4 @@
-package kz.alizhan.lib.Controllers;
+package kz.alimzhan.lib.Controllers;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -13,7 +13,7 @@ public class HelloCommand {
     public static SendMessage helloCom(Update update) {
         SendMessage sendMessage = (SendMessage.builder()
                 .chatId(update.getMessage().getChatId().toString())
-                .text("Здравствуйте, " + getName(update) + ". Вас приветствует библиотека №5")
+                .text("Здравствуйте, " + getName(update) + ". Вас приветствует сеть библиотек города Нур-Султан")
                 .build());
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         sendMessage.setReplyMarkup(replyKeyboardMarkup);

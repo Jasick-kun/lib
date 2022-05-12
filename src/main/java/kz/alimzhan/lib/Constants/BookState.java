@@ -1,4 +1,4 @@
-package kz.alizhan.lib.Constants;
+package kz.alimzhan.lib.Constants;
 
 import lombok.experimental.UtilityClass;
 

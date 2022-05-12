@@ -1,8 +1,9 @@
-package kz.alizhan.lib.Controllers;
+package kz.alimzhan.lib.Controllers;
 
-import kz.alizhan.lib.Entity.Dialog;
-import kz.alizhan.lib.Repository.BookRepository;
-import kz.alizhan.lib.Repository.DialogRepository;
+import kz.alimzhan.lib.Entity.Book;
+import kz.alimzhan.lib.Entity.Dialog;
+import kz.alimzhan.lib.Repository.BookRepository;
+import kz.alimzhan.lib.Repository.DialogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -23,11 +24,15 @@ public class MainCommand extends Bot {
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasCallbackQuery()) {
-            bookRepository.reserveBook(Long.parseLong(update.getCallbackQuery().getData()), update.getCallbackQuery().getFrom().getFirstName() + " " + update.getCallbackQuery().getFrom().getLastName());
+            bookRepository.reserveBook(Long
+                    .parseLong(update.getCallbackQuery().getData()), update
+                    .getCallbackQuery().getFrom().getFirstName() + " " + update.getCallbackQuery().getFrom().getLastName());
             try {
+                Book book = new Book();
+                book = bookRepository.findById(Long.parseLong(update.getCallbackQuery().getData())).get();
                 execute(SendMessage.builder().chatId(update.getCallbackQuery().getMessage().getChatId().toString()).text("Спасибо за обращение.\n" +
                         "Книга успешно забронирована. \n" +
-                        "Можете забрать книгу по адресу Пушкина 11, \n" +
+                        "Можете забрать книгу по адресу " + book.getLibrary().getAddress() + " \n" +
                         "в течений двух дней сказав своё имя из телеграмм").build());
             } catch (TelegramApiException e) {
                 e.printStackTrace();
