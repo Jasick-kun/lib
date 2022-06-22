@@ -27,7 +27,7 @@ create table if not exists dialog
 );
 
 insert into library(name, address)
-values ('Библиотека №1', 'ул. Пушкина 11');
+values ('Библиотека №1', 'ул. Пушкина 55');
 insert into library(name, address)
 values ('Библиотека №2', 'ул. Иманова 37');
 insert into library(name, address)
@@ -36,6 +36,10 @@ insert into library(name, address)
 values ('Библиотека №4', 'ул. Кенесары 69');
 insert into library(name, address)
 values ('Библиотека №5', 'ул. Янушкеевича 1');
+insert into library(name, address)
+values ('Библиотека "Отырар"', 'ул. Пушкина 11');
+insert into library(name, address)
+values ('Центральная городская библиотека им. М. Ауэзова', 'проспект Абылай хана, 4/1');
 
 insert into book (library_id, status, name, year_of_issue, author)
 values (1, 'IN_STOCK', 'Хочу и буду', 2021, 'М. Лабковский');
@@ -87,3 +91,10 @@ insert into book (library_id, status, author, name, year_of_issue)
 values (1, 'IN_STOCK', 'Джоффри Чосер', 'Кентерберийские рассказы', 1400);
 insert into book (library_id, status, author, name, year_of_issue)
 values (1, 'IN_STOCK', 'Джонатан Свифт', 'Путешествия Гулливера', 1726);
+insert into book (library_id, status, author, name, year_of_issue)
+values (6, 'IN_STOCK', 'Роберт Седжвик, Кевин Уэйн', 'Алгоритмы на Java',2013);
+insert into book (library_id, status, author, name, year_of_issue)
+values (7, 'IN_STOCK', 'Роберт Седжвик, Кевин Уэйн', 'Алгоритмы на Java',2013);
+insert into book (library_id, status, author, name, year_of_issue)
+values (6, 'IN_STOCK', 'Джон Сонмез', 'Путь программиста',2016);
+values (7, 'IN_STOCK', 'Джон Сонмез', 'Путь программиста',2016);
