@@ -44,6 +44,10 @@ values ('Центральная городская библиотека им. М
 insert into book (library_id, status, name, year_of_issue, author)
 values (1, 'IN_STOCK', 'Хочу и буду', 2021, 'М. Лабковский');
 insert into book (library_id, status, name, year_of_issue, author)
+values (6, 'IN_STOCK', 'Хочу и буду', 2021, 'М. Лабковский');
+insert into book (library_id, status, name, year_of_issue, author)
+values (7, 'IN_STOCK', 'Хочу и буду', 2021, 'М. Лабковский');
+insert into book (library_id, status, name, year_of_issue, author)
 values (2, 'IN_STOCK', 'Похищенная невеста для Его Наглейшества', 2022, 'Алисия Эванс');
 insert into book (library_id, status, name, year_of_issue, author)
 values (3, 'IN_STOCK', 'Похищенная невеста для Его Наглейшества', 2022, 'Алисия Эванс');
@@ -57,6 +61,10 @@ insert into book (library_id, status, name, year_of_issue, author)
 values (4, 'IN_STOCK', 'Домой на Рождество', 2011, 'Келли Тейлор');
 insert into book (library_id, status, name, year_of_issue, author)
 values (5, 'IN_STOCK', 'Домой на Рождество', 2011, 'Келли Тейлор');
+insert into book (library_id, status, name, year_of_issue, author)
+values (6, 'IN_STOCK', 'Домой на Рождество', 2011, 'Келли Тейлор');
+insert into book (library_id, status, name, year_of_issue, author)
+values (7, 'IN_STOCK', 'Домой на Рождество', 2011, 'Келли Тейлор');
 insert into book (library_id, status, name, year_of_issue, author)
 values (1, 'IN_STOCK', 'Война и мир', 1869, 'Лев Толстой');
 insert into book (library_id, status, name, year_of_issue, author)
@@ -95,6 +103,10 @@ insert into book (library_id, status, author, name, year_of_issue)
 values (6, 'IN_STOCK', 'Роберт Седжвик, Кевин Уэйн', 'Алгоритмы на Java',2013);
 insert into book (library_id, status, author, name, year_of_issue)
 values (7, 'IN_STOCK', 'Роберт Седжвик, Кевин Уэйн', 'Алгоритмы на Java',2013);
+insert into book (library_id, status, author, name, year_of_issue)
+values (4, 'IN_STOCK', 'Роберт Седжвик, Кевин Уэйн', 'Алгоритмы на Java',2013);
+insert into book (library_id, status, author, name, year_of_issue)
+values (5, 'IN_STOCK', 'Роберт Седжвик, Кевин Уэйн', 'Алгоритмы на Java',2013);
 insert into book (library_id, status, author, name, year_of_issue)
 values (6, 'IN_STOCK', 'Джон Сонмез', 'Путь программиста',2016);
 values (7, 'IN_STOCK', 'Джон Сонмез', 'Путь программиста',2016);
